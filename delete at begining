@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node in the linked list
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Function to delete the node at the beginning of the linked list
+void deleteAtBeginning(Node** head) {
+    if (*head == NULL) {
+        printf("List is empty. Nothing to delete.\n");
+        return;
+    }
