@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure to define a node in a linked list
+struct node {
+    int data;
+    struct node *next;
+};
+
+
+        while (temp != NULL && temp->next != NULL) {
+            ptr = ptr->next;
+            temp = temp->next->next;
+        }
+
+        newNode->next = ptr->next;
+        ptr->next = newNode;
+    }
+}
+
+void displayList(struct node *node) {
+    while (node != NULL) {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    int n, x;
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    struct node *head = NULL;
+
+    // Create the linked list
+    for (int i = 1; i <= n; i++) {
+        struct node *newNode = (struct node *)malloc(sizeof(struct node));
+        newNode->data = i;
+        newNode->next = head;
+        head = newNode;
+    }
+
+    printf("Linked list before insertion: ");
+    displayList(head);
+
+    printf("Enter data to insert in the middle of the list: ");
+    scanf("%d", &x);
+
+    insertAtMid(&head, x);
+
+    printf("Linked list after insertion: ");
+    displayList(head);
+
+    return 0;
+}
