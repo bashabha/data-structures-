@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+
+// Function to create a new node
+struct node* createNode(int data) {
+    struct node* newNode = (struct node*)malloc(sizeof(struct node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
+
+// Function to insert a new node at the beginning
+void insertStart(struct node** head, int data) {
+    struct node* newNode = createNode(data);
+    if (*head != NULL) {
+        newNode->next = *head;
+        (*head)->prev = newNode;
+    }
+    *head = newNode;
+}
+
+// Function to display the doubly linked list
+void display(struct node* head) {
+    struct node* temp = head;
+    while (temp != NULL) {
+        printf("(%d, %d) ", temp->data, temp->prev ? temp->prev->data : -1);
+        temp = temp->next;
+    }
+    printf("]\n");
+}
+
+int main() {
+    struct node* head = NULL;
+    insertStart(&head, 1);
+    insertStart(&head, 2);
+    insertStart(&head, 3);
+    display(head);
+    return 0;
+}
