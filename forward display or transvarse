@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int n = 0;
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    int output2 = 0;
+    int count = 0;
+
+    printf("Number? > ");
+    scanf("%d", &n);
+
+    i = n;
+    j = n;
+
+    while (i) {
+        i = i / 10;
+        count++;
+    }
+
+    printf("Forward direction \n");
+
+    while (count > 0) {
+        k = j;
+        k /= pow(10, count - 1);
+        output2 = k % 10;
+
+        if (output2 >= pow(10, count - 1)) {
+            printf("Last digit: %d \n", output2);
+        } else {
+            printf("Digit: %d \n", output2);
+        }
+        count--;
+    }
+
+    return 0;
+}
